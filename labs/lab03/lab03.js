@@ -3,8 +3,16 @@ import zlib from 'zlib';
 
 class lab03 {
 
-  syncFileRead(/* Insert Parameters here */) {
-    /* Implement function here */
+  syncFileRead(filename) {
+    var fs = require("fs");
+    console.log("Synchronous File Read");
+    var readerStream = fs.createReadStream(filename);
+    readerStream.setEncoding('UTF8');
+    readerStream.on()
+    var data = fs.syncFileRead(filename);
+    console.log(data.toString());
+
+    return f;
   }
 
   asyncFileRead(/* Insert Parameters here */) {
