@@ -4,31 +4,41 @@ import zlib from 'zlib';
 class lab03 {
 
   syncFileRead(filename) {
-    var fs = require("fs");
-    console.log("Synchronous File Read");
-    var readerStream = fs.createReadStream(filename);
-    readerStream.setEncoding('UTF8');
-    readerStream.on()
-    var data = fs.syncFileRead(filename);
-    console.log(data.toString());
-
-    return f;
+    var data = fs.readFileSync(filename);
+    return data.toString();
   }
 
-  asyncFileRead(/* Insert Parameters here */) {
-    /* Implement function here */
+  asyncFileRead(filename, callback)
+  {
+    fs.readFile(filename, function (err, data) {
+      if (err) return console.error(err);
+      callback(data.toString());
+    });
+
   }
 
-  compressFileStream(/* Insert Parameters here */) {
-    /* Implement function here */
+  compressFileStream(input_f, output_f) {
+    var stream = fs.createReadStream(input_f)
+                  .pipe(zlib.createGzip())
+                  .pipe(fs.createWriteStream(output_f));
+
+    return stream;
   }
 
-  decompressFileStream(/* Insert Parameters here */) {
-    /* Implement function here */
+  decompressFileStream(input_f, output_f) {
+    var stream = fs.createReadStream(input_f)
+      .pipe(zlib.createGunzip())
+      .pipe(fs.createWriteStream(output_f));
+
+    return stream;
   }
 
-  listDirectoryContents(/* Insert Parameters here */) {
-    /* Implement function here */
+
+  listDirectoryContents(directory, callback) {
+    var files = fs.readdir(directory, function (err, files) {
+      if (err) return console.error(err);
+      return callback(files);
+    });
   }
 
 }
