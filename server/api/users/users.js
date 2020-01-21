@@ -36,6 +36,7 @@ export function findOne(req, res) {
 
 }
 
+//TODO ADD VALIDTATION
 export function createUser(req, res) {
   /* Implementation here */
   /* adds a new user object to the in-memory users list */
@@ -64,6 +65,7 @@ export function createUser(req, res) {
     res object with a status code of CREATED */
 }
 
+//TODO ADD VALIDATION
 export function updateUser(req, res){
   let userExists = 0;
   let idToFind = req.params.id;
@@ -72,22 +74,19 @@ export function updateUser(req, res){
     console.log("loop: " + i);
     if (users[i].id === idToFind)
     {
+      users[i] = {
+        name : req.body.name,
+        address : req.body.address,
+        age : req.body.age,
+        id : idToFind
+      };
       userExists = 1;
+      res.status(200);
+      res.json({updatedUser : users[i]});
     }
   }
 
-  if (userExists) {
-    let updatedUser = {
-      name : req.body.name,
-      address : req.body.address,
-      age : req.body.age,
-      id : idToFind
-    }
-
-    res.status(200);
-    res.json({updatedUser : updatedUser});
-  }
-  else {
+  if (userExists == 0) {
     let user =
       {
         name : req.body.name,
