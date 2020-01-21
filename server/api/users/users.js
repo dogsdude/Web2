@@ -23,15 +23,17 @@ export function findOne(req, res) {
     {
       console.log("TRUE");
       res.status(200);
-      res.json({user_with_id: users[i]});
-      found = 1;
+      res.json({user: users[i]});
+      return found;
     }
   }
   // if no matching user is found, send error
   if (found == 0) {
     res.status(404);
     res.json({message: 'Not Found!'});
+    return null;
   }
+
 }
 
 export function createUser(req, res) {
@@ -60,6 +62,67 @@ export function createUser(req, res) {
   /* After adding the new user object to the list,
     the function will send the user as json to the
     res object with a status code of CREATED */
+}
+
+export function updateUser(req, res){
+  let userExists = 0;
+  let idToFind = req.params.id;
+  console.log(idToFind);
+  for (let i = 0; i < users.length; i++) {
+    console.log("loop: " + i);
+    if (users[i].id === idToFind)
+    {
+      userExists = 1;
+    }
+  }
+
+  if (userExists) {
+    let updatedUser = {
+      name : req.body.name,
+      address : req.body.address,
+      age : req.body.age,
+      id : idToFind
+    }
+
+    res.status(200);
+    res.json({updatedUser : updatedUser});
+  }
+  else {
+    let user =
+      {
+        name : req.body.name,
+        address : req.body.address,
+        age : req.body.age,
+        id : idToFind
+      }
+      users.push(user);
+      res.status(201);
+      res.json({newUser : user});
+  }
+
+}
+
+export function removeUser(req, res){
+  let userIndex = -1;
+  let user;
+  let idToFind = req.params.id;
+  for (let i = 0; i < users.length; i++) {
+    console.log(users[i].id);
+    if (users[i].id === idToFind)
+    {
+      user = users[i];
+      userIndex = i;
+    }
+  }
+  if(userIndex != -1)
+  {
+    users.splice(userIndex,1);
+    res.status(204).send();
+  }
+  else {
+    res.status(404);
+    res.json({message: 'Not Found!'});
+  }
 }
 
 
