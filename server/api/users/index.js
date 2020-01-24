@@ -1,16 +1,17 @@
 // This file will be used to define our routes in Express.js
 import express from 'express';
-import * as users from './users';
+import * as controller from './users.controller';
 
+// Declare an Express.js Router instance
 let router = express.Router();
 
-router.get('/', users.listContents);
-router.get('/:id', users.findOne);
+router.get('/', controller.index);
+router.get('/:id', controller.show);
 
-router.post('/', users.createUser);
+router.post('/', controller.create);
 
-router.put('/:id', users.updateUser);
+router.put('/:id', controller.upsert);
 
-router.delete('/:id', users.removeUser);
+router.delete('/:id', controller.destroy);
 
 export {router};
