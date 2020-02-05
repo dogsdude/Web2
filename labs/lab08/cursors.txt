@@ -1,0 +1,9 @@
+https://docs.mongodb.com/manual/tutorial/iterate-a-cursor/
+
+A cursor is returned from the db.collection.find() function. They can be assigned to a variable, with var,
+and it includes a number of methods such as .next() or .hasNext().
+
+.toArray() returns the contents of the cursor in an array.
+
+Cursors are closed automatically after 10 minutes of inactivity, but this can be overrided with .noCursorTimeout()
+
