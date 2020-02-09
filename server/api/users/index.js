@@ -1,17 +1,19 @@
-// This file will be used to define our routes in Express.js
 import express from 'express';
 import * as controller from './users.controller';
 
-// Declare an Express.js Router instance
 let router = express.Router();
 
+// GET methods
 router.get('/', controller.index);
 router.get('/:id', controller.show);
 
+// POST method
 router.post('/', controller.create);
 
-router.put('/:id', controller.upsert);
+// PUT method
+router.put('/:id', controller.update);
 
+// DELETE method
 router.delete('/:id', controller.destroy);
 
 export {router};
