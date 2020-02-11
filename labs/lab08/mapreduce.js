@@ -3,14 +3,11 @@
 // The longitude of the city (and I spose the city's name) are the only
 // relevant fields
 map = function() {
-  // select the rounded-down longitude from the object
-  var long = sameLongitude(this);
   // emit this and the name of the city
   emit(
     //  Key
     {
-    longitudes: long,
-    city: this.name
+    longitude: Math.floor(this.location.longitude)
   },
     //  Value
     {

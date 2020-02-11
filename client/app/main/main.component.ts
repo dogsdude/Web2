@@ -16,4 +16,7 @@ export class MainComponent implements OnInit {
     ngOnInit() {
     }
 
+  private values: string[];
+  this.values = ['first', 'second', 'third'];
+
 }
