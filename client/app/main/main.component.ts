@@ -11,12 +11,10 @@ export class MainComponent implements OnInit {
     static parameters = [HttpClient];
     constructor(private http: HttpClient) {
         this.http = http;
+        this.values = ['first', 'second', 'third'];
     }
 
     ngOnInit() {
     }
-
   private values: string[];
-  this.values = ['first', 'second', 'third'];
-
 }
