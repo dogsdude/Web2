@@ -4,7 +4,8 @@
 
 import errors from './components/errors';
 import path from 'path';
-import * as users from './api/users';
+//import * as users from './api';
+import * as users from './api/users/'
 
 export default function(app) {
     app.use('/api/users', users.router);
