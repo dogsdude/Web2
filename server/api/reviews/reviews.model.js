@@ -7,7 +7,7 @@ let reviewsSchema = Schema({
   // TODO limit stars
   review_rating: {type: Number, required: true},
   date: {type: Date, default: Date.now, required: true},
-  by_user: {type: Schema.Types.ObjectId, ref: 'users', required: true}
+  by_user: {type: Schema.Types.ObjectId, ref: 'User', required: true}
 });
 
 let Review = mongoose.model('Review', reviewsSchema);
