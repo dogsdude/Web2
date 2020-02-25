@@ -13,4 +13,11 @@ export class UserService {
       .get<Users>('/api/users/')
       .toPromise();
   }
+  // TODO: TEST
+  getUserById(userId): Promise<Users> {
+    let url = `/api/users/${userId}`;
+    return this.httpClient
+      .get<Users>(url)
+      .toPromise();
+  }
 }
