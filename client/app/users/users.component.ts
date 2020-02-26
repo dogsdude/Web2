@@ -1,12 +1,16 @@
 import {Component, OnInit} from '@angular/core';
 import * as sharedConfig from '../app.constants';
 import {Users} from '../../components/interfaces/Users';
+import {User} from "../../components/interfaces/User";
+import {UsersModule} from "./users.module";
+import {Routes, Route, RouterModule} from "@angular/router";
 
 import {UserService} from "../../components/services/user.service";
 
 import {ActivatedRoute} from "@angular/router";
 
 import {HttpClient} from "@angular/common/http";
+
 
 @Component({
   selector: 'users',
@@ -15,22 +19,25 @@ import {HttpClient} from "@angular/common/http";
 })
 export class UsersComponent implements OnInit {
 
-  private users: Users;
-  private userService : UserService;
-  // TODO What is the route?
-  //private route;
+  //TODO what kinds of variables are necessary for Users Component?
+  private users: User[];
+  static parameters = [UserService, ActivatedRoute];
 
-  constructor() {
-    // TODO What needs to be constructed?
-    this.users;
-    // TODO Where do UserService and ActivateRoute factor in?
-    this.userService = new UserService();
+  //TODO determine if complete
+  constructor(private userService: UserService, private route: ActivatedRoute) {
+    this.userService = userService;
+    this.route = route;
+
   }
 
   ngOnInit() {
-    // TODO Why is route unrecognized? What am I supposed to do with this.route.params?
-    let userid = this.route.params.subscribe(params => {
-      // look up a user by id
-    })
-  }
+    this.userService.getUserById('5e55bf32d895c30a8a588964')
+    .catch(this.handleError);
+    }
+
+    private handleError(error: any): Promise<any> {
+    console.error("Something has gone wrong!", error);
+    return Promise.reject(error.message || error);
+    }
+
 }

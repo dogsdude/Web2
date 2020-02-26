@@ -1,6 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Users} from '../interfaces/Users';
+import {User} from "../interfaces/User";
 
 @Injectable()
 export class UserService {
@@ -14,10 +15,10 @@ export class UserService {
       .toPromise();
   }
   // TODO: TEST
-  getUserById(userId): Promise<Users> {
+  getUserById(userId): Promise<User> {
     let url = `/api/users/${userId}`;
     return this.httpClient
-      .get<Users>(url)
+      .get<User>(url)
       .toPromise();
   }
 }

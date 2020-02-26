@@ -33,7 +33,7 @@
         </thead>
         <tbody>
         <tr *ngFor="let user of users">
-          <td>{{user._id}}</td>
+          <td><button [routerLink]="['/users']">{{user._id}}</button> </td>
           <td>{{user.age}}</td>
           <td>{{user.name.firstName}}</td>
           <td>{{user.name.middleName}}</td>
@@ -51,6 +51,7 @@
     <div>
       <button [routerLink]="['/about']">About the Author</button>
     </div>
+
   </div>
 </div>
 

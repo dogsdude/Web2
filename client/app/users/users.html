@@ -1,8 +1,60 @@
 <!-- TODO
 "Create a simple page that displays each attribute of the user.
-  Format it however you'd like, but each user attribute
+  Format it however you'd like, but each user attribute --
     (_id, age, name.firstName, name.middleName, name.lastName,
     address.addressLine1, address.addressLine2, address.city,
     address.state, address.zip)
-  must be displayed."
+  -- must be displayed."
+-->
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div>
+      <h1 class="page-header">User Details</h1>
+        <div>
+          ID: {{users?._id}}
+        </div>
+        <div>
+          Name: {{ users?.name.firstName }} {{users?.name.middleName}}
+          {{ users?.name.lastName }}
+        </div>
+        <div>
+          Age: {{users?.age}}
+        </div>
+        <div>
+          Address:{{users?.address.addressLine1}} <br>
+          {{users?.address.addressLine2}}
+        </div>
+        <div>
+          City: {{users?.address.city}}
+        </div>
+        <div>
+          State: {{users?.address.state}} <br>
+          ZIP: {{users?.address.zip}}
+        </div>
+      </div>
+  </div>
+</div>
+
+<!-- export interface User {
+  _id: string;
+  name: {
+    _id: string,
+    firstName: string,
+    middleName: string,
+    lastName: string
+  };
+  address: {
+    _id: string,
+    addressLine1: string,
+    addressLine2: string,
+    city: string,
+    state: string,
+    zip: number,
+    __v: number
+  };
+  age: number;
+  __v: number;
+}
 -->
