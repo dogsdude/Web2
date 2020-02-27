@@ -14,6 +14,7 @@ import {SquarePipe} from '../../components/pipes/square.pipe';
 import {UserService} from '../../components/services/user.service';
 import {UpdateUserModule} from '../../components/modals/update-user.module';
 import {ModalModule} from 'ngx-bootstrap';
+import {CreateUserModule} from "../../components/modals/create-user.module";
 
 export const ROUTES: Routes = [
     { path: 'home', component: MainComponent },
@@ -26,6 +27,7 @@ export const ROUTES: Routes = [
         FormsModule,
         BrowserAnimationsModule,
         UpdateUserModule,
+        CreateUserModule
         RouterModule.forChild(ROUTES),
 
         TooltipModule.forRoot(),
