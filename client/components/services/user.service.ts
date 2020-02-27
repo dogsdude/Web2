@@ -24,4 +24,9 @@ export class UserService {
       .put<User>(`/api/users/${user._id}`, user)
       .toPromise();
   }
+  createUser(user: User): Promise<User> {
+    return this.httpClient
+      .post<User>(`/api/users`, user)
+      .toPromise();
+  }
 }

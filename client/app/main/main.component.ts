@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {UserService} from '../../components/services/user.service';
 import {User} from '../../components/interfaces/User';
 import {UpdateUserComponent} from '../../components/modals/update-user.component';
+import {CreateUserComponent} from "../../components/modals/create-user.component";
 import {BsModalService} from 'ngx-bootstrap';
 
 @Component({
@@ -58,8 +59,18 @@ export class MainComponent implements OnInit {
 
   //TODO Implement functionality in the main Component that will, upon receiving a new User event from the modal dialog, use the User service to post the new user to your /api/users route
   // Display the new Id of the User at the top of the modal once the creation succeeds, or print the error at the top of the modal if the creation fails
-  public createUser() {
-    
+  public makeUser() {
+    const modalRef = this.modalService.show(CreateUserComponent);
+    modalRef.content.createdUser.subscribe(() => {
+      this.userService.createUser()
+        .then(createdUser => {
+          modalRef.content.formInfo = `User ${createdUser._id} created!`;
+        })
+        .catch(err => {
+          console.log(err);
+          modalRef.content.formError = err.error.message;
+        });
+    });
   }
 
   private handleError(error: any): Promise<any> {
