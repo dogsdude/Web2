@@ -4,6 +4,7 @@ import {UserService} from '../../components/services/user.service';
 import {User} from '../../components/interfaces/User';
 import {UpdateUserComponent} from '../../components/modals/update-user.component';
 import {CreateUserComponent} from "../../components/modals/create-user.component";
+import {BasicRatingComponent} from "../../components/modals/basic-rating.component";
 import {BsModalService} from 'ngx-bootstrap';
 
 @Component({
@@ -82,3 +83,4 @@ export class MainComponent implements OnInit {
   ngOnInit() {
   }
 }
+

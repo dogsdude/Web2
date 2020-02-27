@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Lab 13: ngx-bootstrap Modal Dialogs</h1>
+      <h1 class="page-header">Lab 14: ngx-bootstrap Components</h1>
 
       <h1>Enter a value here: <input [(ngModel)]="input"></h1>
 
@@ -63,5 +63,18 @@
     <div>
       <button [routerLink]="['/about']">About the Author</button>
     </div>
+
+    <div>
+      <rating [max]="5" [(ngModel)]="x" [customTemplate]="tt"></rating>
+      <div class="card">
+        <pre class="card-block card-header" style="margin:15px 0;"> <b>(<i>Rate:</i> {{x}})</b> </pre>
+      </div>
+      <ng-template #tt let-i="index" let-v="value">
+        <button class="btn btn-{{i < v ? 'warning' : 'default'}}">
+          {{i < v ? '&#9733;' : '&#9734;'}}
+        </button>
+      </ng-template>
+    </div>
+
   </div>
 </div>

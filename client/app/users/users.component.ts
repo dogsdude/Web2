@@ -19,11 +19,10 @@ import {HttpClient} from "@angular/common/http";
 })
 export class UsersComponent implements OnInit {
 
-  //TODO what kinds of variables are necessary for Users Component?
+  private user: User;
   private users: User[];
   static parameters = [UserService, ActivatedRoute];
 
-  //TODO determine if complete
   constructor(private userService: UserService, private route: ActivatedRoute) {
     this.userService = userService;
     this.route = route;
@@ -31,7 +30,11 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getUserById(this.route.params.subscribe())
+    this.userService.getUserById(this.route.params.subscribe(params =>
+    this.userService.getUserById(params.id)
+      .then(user => {
+        this.user = user;
+      })))
     .catch(this.handleError);
     }
 
