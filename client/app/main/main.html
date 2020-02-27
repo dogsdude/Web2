@@ -29,11 +29,16 @@
           <th>City</th>
           <th>State</th>
           <th>Zip</th>
+          <th>Edit User</th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let user of users">
-          <td><button [routerLink]="['/users']">{{user._id}}</button> </td>
+          <td>
+            <button [routerLink]="['/users', user._id]"
+                    type="button" class="btn btn-default">{{user._id}}
+            </button>
+          </td>
           <td>{{user.age}}</td>
           <td>{{user.name.firstName}}</td>
           <td>{{user.name.middleName}}</td>
@@ -43,6 +48,11 @@
           <td>{{user.address.city}}</td>
           <td>{{user.address.state}}</td>
           <td>{{user.address.zip}}</td>
+          <td>
+            <button (click)="editUser(user)"
+                    type="button" class="btn btn-default">Edit User
+            </button>
+          </td>
         </tr>
         </tbody>
       </table>
@@ -51,12 +61,5 @@
     <div>
       <button [routerLink]="['/about']">About the Author</button>
     </div>
-
   </div>
 </div>
-
-<!-- TODO
-  Modify the main Component HTML to make the id of each user in the
-  ngFor of your table a button with [routerLink] that navigates to the new Component!
-  (https://angular.io/guide/router#router-link)
--->

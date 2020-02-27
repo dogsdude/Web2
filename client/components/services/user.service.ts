@@ -14,11 +14,14 @@ export class UserService {
       .get<Users>('/api/users/')
       .toPromise();
   }
-  // TODO: TEST
   getUserById(userId): Promise<User> {
-    let url = `/api/users/${userId}`;
     return this.httpClient
-      .get<User>(url)
+      .get<User>(`/api/users/${userId}`)
+      .toPromise();
+  }
+  updateUser(user: User): Promise<User> {
+    return this.httpClient
+      .put<User>(`/api/users/${user._id}`, user)
       .toPromise();
   }
 }

@@ -31,7 +31,7 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getUserById('5e55bf32d895c30a8a588964')
+    this.userService.getUserById(this.route.params.subscribe())
     .catch(this.handleError);
     }
 
