@@ -56,6 +56,12 @@ export class MainComponent implements OnInit {
     });
   }
 
+  //TODO Implement functionality in the main Component that will, upon receiving a new User event from the modal dialog, use the User service to post the new user to your /api/users route
+  // Display the new Id of the User at the top of the modal once the creation succeeds, or print the error at the top of the modal if the creation fails
+  public createUser() {
+    
+  }
+
   private handleError(error: any): Promise<any> {
     console.error('Something has gone wrong', error);
     return Promise.reject(error.message || error);
