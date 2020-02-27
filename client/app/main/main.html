@@ -15,10 +15,6 @@
       <hr size="5">
       <h1>{{ valueToSquare }} * {{ valueToSquare }} = {{ valueToSquare | square }}</h1>
 
-      <button (click)="makeUser()" type="button" class="btn btn-default">
-        Create User
-      </button>
-
       <hr size="5">
       <table class="table">
         <thead>
@@ -61,7 +57,9 @@
         </tbody>
       </table>
     </div>
-
+    <button (click)="makeUser()" type="button" class="btn btn-default">
+      Create User
+    </button>
     <div>
       <button [routerLink]="['/about']">About the Author</button>
     </div>
