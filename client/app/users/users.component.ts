@@ -1,16 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import * as sharedConfig from '../app.constants';
-import {Users} from '../../components/interfaces/Users';
-import {User} from "../../components/interfaces/User";
-import {UsersModule} from "./users.module";
-import {Routes, Route, RouterModule} from "@angular/router";
-
-import {UserService} from "../../components/services/user.service";
-
-import {ActivatedRoute} from "@angular/router";
-
-import {HttpClient} from "@angular/common/http";
-
+import {User} from '../../components/interfaces/User';
+import {UserService} from '../../components/services/user.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'users',
@@ -20,27 +11,19 @@ import {HttpClient} from "@angular/common/http";
 export class UsersComponent implements OnInit {
 
   private user: User;
-  private users: User[];
-  static parameters = [UserService, ActivatedRoute];
+  static parameters = [ActivatedRoute, UserService];
 
-  constructor(private userService: UserService, private route: ActivatedRoute) {
-    this.userService = userService;
+  constructor(private route: ActivatedRoute, private userService: UserService) {
     this.route = route;
-
+    this.userService = userService;
   }
 
   ngOnInit() {
-    this.userService.getUserById(this.route.params.subscribe(params =>
-    this.userService.getUserById(params.id)
-      .then(user => {
-        this.user = user;
-      })))
-    .catch(this.handleError);
-    }
-
-    private handleError(error: any): Promise<any> {
-    console.error("Something has gone wrong!", error);
-    return Promise.reject(error.message || error);
-    }
-
+    this.route.params.subscribe(params => {
+      this.userService.getUserById(params.id)
+        .then(user => {
+          this.user = user;
+        });
+    });
+  }
 }
