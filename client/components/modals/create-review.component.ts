@@ -15,13 +15,14 @@ export class CreateReviewComponent {
   formInfo: String;
   @Output()
   private review: Review = {
-  review_desc: undefined,
-  review_rating: undefined,
-  date: undefined,
-  user: undefined
-}
+    review_desc: undefined,
+    review_rating: undefined,
+    date: undefined,
+    user: undefined
+  };
 
-  createdRecipe: EventEmitter<Recipe> = new EventEmitter<Recipe>();
+  createdReview: EventEmitter<Review> = new EventEmitter<Review>();
+
   static parameters = [BsModalRef];
   constructor(public bsModalRef: BsModalRef) {}
 

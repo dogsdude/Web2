@@ -15,12 +15,12 @@ export class MainComponent implements OnInit {
 
   private users: User[];
   private input: string;
-  static parameters = [HttpClient, RecipeService];
+  static parameters = [HttpClient, RecipeService, BsModalService];
 
   constructor(private http: HttpClient, private recipeService: RecipeService, private modalService: BsModalService) {
     this.http = http;
     this.recipeService = recipeService;
-    this.modalService = modalService
+    this.modalService = modalService;
     this.makeRecipe();
   }
 
@@ -31,6 +31,7 @@ export class MainComponent implements OnInit {
   //     })
   //     .catch(this.handleError);
   // }
+
   public makeRecipe() {
     console.log("what is this:" + this.modalService);
     const modalRef = this.modalService.show(CreateRecipeComponent);
