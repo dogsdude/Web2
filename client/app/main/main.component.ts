@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {UserService} from '../../components/services/user.service';
 import {RecipeService} from "../../components/services/recipe.service";
 import {User} from '../../components/interfaces/User';
 import {CreateRecipeComponent} from '../../components/modals/create-recipe.component';
@@ -16,24 +15,24 @@ export class MainComponent implements OnInit {
 
   private users: User[];
   private input: string;
-  static parameters = [HttpClient, UserService];
+  static parameters = [HttpClient, RecipeService];
 
-  constructor(private http: HttpClient, private userService: UserService, private recipeService: RecipeService, private modalService: BsModalService) {
+  constructor(private http: HttpClient, private recipeService: RecipeService, private modalService: BsModalService) {
     this.http = http;
-    this.userService = userService;
     this.recipeService = recipeService;
     this.modalService = modalService
-    this.getUserData();
+    this.makeRecipe();
   }
 
-  public getUserData() {
-    this.userService.getAllUsers()
-      .then(response => {
-        this.users = response.users as User[];
-      })
-      .catch(this.handleError);
-  }
+  // public getUserData() {
+  //   this.userService.getAllUsers()
+  //     .then(response => {
+  //       this.users = response.users as User[];
+  //     })
+  //     .catch(this.handleError);
+  // }
   public makeRecipe() {
+    console.log("what is this:" + this.modalService);
     const modalRef = this.modalService.show(CreateRecipeComponent);
     modalRef.content.createdRecipe.subscribe((user) => {
       this.recipeService.createRecipe(user)

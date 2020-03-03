@@ -26,9 +26,13 @@ export class CreateRecipeComponent {
     ingredients: undefined,
     user_reviews: undefined,
   };
+
   createdRecipe: EventEmitter<Recipe> = new EventEmitter<Recipe>();
+
   static parameters = [BsModalRef];
+
   constructor(public bsModalRef: BsModalRef) {}
+
   createRecipe() {
     this.createdRecipe.emit(this.recipe);
   }

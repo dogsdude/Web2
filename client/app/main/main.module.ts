@@ -5,7 +5,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { TooltipModule } from 'ngx-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainComponent } from './main.component';
-import {UserService} from '../../components/services/user.service';
 import {RecipeService} from "../../components/services/recipe.service";
 import {CreateRecipeModule} from "../../components/modals/create-recipe.module";
 import {ModalModule} from "ngx-bootstrap";
@@ -36,7 +35,6 @@ export const ROUTES: Routes = [
   ],
 
   providers: [
-    UserService,
     RecipeService
   ]
 })
