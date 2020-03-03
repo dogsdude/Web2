@@ -3,9 +3,8 @@ import {HttpClient} from '@angular/common/http';
 import {UserService} from '../../components/services/user.service';
 import {User} from '../../components/interfaces/User';
 import {UpdateUserComponent} from '../../components/modals/update-user.component';
-import {CreateUserComponent} from "../../components/modals/create-user.component";
-import {BasicRatingComponent} from "../../components/modals/basic-rating.component";
 import {BsModalService} from 'ngx-bootstrap';
+import {CreateUserComponent} from '../../components/modals/create-user.component';
 
 @Component({
   selector: 'main',
@@ -16,8 +15,10 @@ export class MainComponent implements OnInit {
 
   private values: string[];
   private valueToSquare: number;
-  private users: User[];
+  public users: User[] = [];
   private input: string;
+  private rating: Number = 4.3;
+  private max: Number = 5;
   static parameters = [HttpClient, UserService, BsModalService];
 
   constructor(private http: HttpClient, private userService: UserService, private modalService: BsModalService) {
@@ -41,7 +42,7 @@ export class MainComponent implements OnInit {
       .catch(this.handleError);
   }
 
-  public editUser(user: User) {
+  public updateUser(user: User) {
     const initialState = {
       user
     }
@@ -58,22 +59,19 @@ export class MainComponent implements OnInit {
     });
   }
 
-  //TODO Implement functionality in the main Component that will, upon receiving a new User event from the modal dialog, use the User service to post the new user to your /api/users route
-  // Display the new Id of the User at the top of the modal once the creation succeeds, or print the error at the top of the modal if the creation fails
-  public makeUser() {
-    const modelRef = this.modalService.show(CreateUserComponent);
-    modelRef.content.createdUser.subscribe((user) => {
-      this.userService.createUser(user)
+  public createUser() {
+    const modalRef = this.modalService.show(CreateUserComponent);
+    modalRef.content.userToCreate.subscribe(userToCreate => {
+      this.userService.createUser(userToCreate)
         .then(createdUser => {
-          modelRef.content.formInfo = `User ${createdUser._id} created!`;
+          modalRef.content.formInfo = `User ${createdUser._id} created!`;
         })
         .catch(err => {
           console.log(err);
-          modelRef.content.formError = err.error.message;
-        })
-    })
+          modalRef.content.formError = err.error.message;
+        });
+    });
   }
-
 
   private handleError(error: any): Promise<any> {
     console.error('Something has gone wrong', error);
@@ -83,4 +81,3 @@ export class MainComponent implements OnInit {
   ngOnInit() {
   }
 }
-
