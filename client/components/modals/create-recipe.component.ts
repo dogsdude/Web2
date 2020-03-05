@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { User } from '../interfaces/User';
 import { Recipe } from '../interfaces/Recipe';
-import { Review} from "../interfaces/Review";
+import { Review } from "../interfaces/Review";
 
 @Component({
   selector: 'create-recipe',
@@ -13,7 +13,7 @@ export class CreateRecipeComponent {
   formError: String;
   @Input()
   formInfo: String;
-  @Output()
+  @Input()
   private recipe: Recipe = {
     _id: undefined,
     __v: undefined,
@@ -22,18 +22,27 @@ export class CreateRecipeComponent {
     img_url: undefined,
     prep_time: undefined,
     cook_time: undefined,
-    directions: undefined,
-    ingredients: undefined,
-    user_reviews: undefined,
+    directions: [],
+    ingredients: [],
+    user_reviews: [],
   };
+
+  constructor(public bsModalRef: BsModalRef) {}
 
   createdRecipe: EventEmitter<Recipe> = new EventEmitter<Recipe>();
 
   static parameters = [BsModalRef];
 
-  constructor(public bsModalRef: BsModalRef) {}
+  addDirectionField(){
+    this.recipe.directions.push('');
+  }
 
   createRecipe() {
     this.createdRecipe.emit(this.recipe);
   }
+
 }
+  // addIngredient(string, number) {
+  //   this.ingredients.push
+  // }
+

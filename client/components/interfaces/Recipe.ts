@@ -10,10 +10,6 @@ export interface Recipe {
   prep_time: number;
   cook_time: number;
   directions: string[];
-  ingredients: {
-    ingredient_name: string,
-    ingredient_amt: number
-  }[];
+  ingredients: {ingredient_name: string}[];
   user_reviews: Review[];
-
 }

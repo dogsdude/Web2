@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { TooltipModule } from 'ngx-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainComponent } from './main.component';
-import {RecipeService} from "../../components/services/recipe.service";
-import {CreateRecipeModule} from "../../components/modals/create-recipe.module";
-import {ModalModule} from "ngx-bootstrap";
+import { RecipeService } from "../../components/services/recipe.service";
+import { CreateRecipeModule } from "../../components/modals/create-recipe.module";
+import { ModalModule } from "ngx-bootstrap";
 
 
 export const ROUTES: Routes = [
@@ -21,6 +21,7 @@ export const ROUTES: Routes = [
     ModalModule.forRoot(),
     CreateRecipeModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     RouterModule.forChild(ROUTES),
     TooltipModule.forRoot(),
