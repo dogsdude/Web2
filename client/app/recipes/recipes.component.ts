@@ -1,3 +1,7 @@
+import {Component, OnInit} from '@angular/core';
+import {Recipe} from '../../components/interfaces/Recipe';
+import {RecipeService} from '../../components/services/recipe.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'recipes',
