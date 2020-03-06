@@ -47,12 +47,22 @@
         <!--          <input type="number" id="ingredient1-amt" name="ingredients[0].ingredient_amt" required="required" [(ngModel)]="recipe.ingredients" class="form-control"/>-->
         <!--        </div>-->
         <!--  class="col-xs-4 col-sm-4 control-label" //  class="col-xs-8 col-sm-8 col-md-8 col-lg-8"-->
-        <label for="directions">Directions</label>
+
+        <label for="ingredients">(Ingredients)</label>
+        <button type="button" (click)="recipe.ingredients.push({ingredient_name:''})" class="btn btn-success">+</button>
+        <div class="col-xs-8 col-sm-8" class="form-control">
+          <input id="ingredients" *ngFor="let ing of recipe.ingredients; let i=index;" type="text" required="required"
+                 [(ngModel)]="ing.ingredient_name" placeholder="e.g. 1 Tbsp Olive Oil" class="form-control"/>
+        </div> <br>
+
+
+
+        <label for="directions">(Directions)</label>
+        <button type="button" (click)="addDirectionField()" class="btn btn-success">+</button>
         <div class="col-xs-8 col-sm-8" class="form-control">
           <input *ngFor="let dir of recipe.directions; let i=index;"
                  id="directions" type="text" required="required" [ngModel]="dir" (ngModelChange)="recipe.directions[i]=$event"
                  placeholder="Directions..." class="form-control"/> <br> <br>
-          <button type="button" (click)="addDirectionField()" class="btn btn-success">+</button>
         </div>
 
         <!-- with an array of objects, you don't need a ngmodelchange $event-->
