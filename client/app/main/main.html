@@ -37,27 +37,17 @@
       <tr>
       <th class = "hidden-xs hidden-sm col-md-4 col-lg-3">Name</th>
       <th class = "hidden-xs hidden-sm col-md-4 col-lg-3">Description</th>
-      <th class = "hidden-xs col-sm-6 col-md-4 col-lg-3">Image</th>
-      <th class = "hidden-xs col-sm-6 col-md-4 col-lg-3">Prep Time</th>
-      <th class = "hidden-xs col-sm-6 col-md-4 col-lg-3">Cook Time</th>
-      <th class = "hidden-xs col-sm-6 col-md-4 col-lg-3">Directions</th>
-      <th class = "hidden-xs col-sm-6 col-md-4 col-lg-3">Ingredients</th><th class = "hidden-xs col-sm-6 col-md-4 col-lg-3">Ingredients</th>
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let recipe of recipe">
+      <tr *ngFor="let recipe of recipes">
         <td class = "col-xs-12 col-sm-6 col-md-4 col-lg-3">>
           <button [routerLink]="['/recipes', recipe._id]"
-                  type="button" class="btn btn-default">{{user._id}}
+                  type="button" class="btn btn-default">{{recipe._id}}
           </button>
         </td>
         <td class = "col-xs-12 col-sm-6 col-md-4 col-lg-3">{{recipe.name}}</td>
         <td class = "col-xs-12 col-sm-6 col-md-4 col-lg-3">{{recipe.description}}</td>
-        <td class = "hidden-xs col-sm-6 col-md-4 col-lg-3">{{recipe.image}}</td>
-        <td class = "col-xs-12 col-sm-6 col-md-4 col-lg-3">{{recipe.prep_time}}</td>
-        <td class = "hidden-xs hidden-sm col-md-4 col-lg-3">{{recipe.cook_time}}</td>
-        <td class = "hidden-xs hidden-sm col-md-4 col-lg-3">{{recipe.directions}}</td>
-        <td class = "hidden-xs col-sm-6 col-md-4 col-lg-3">{{recipe.ingredients}}</td>
 
       </tr>
       </tbody>

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {RecipeService} from "../../components/services/recipe.service";
-import {User} from '../../components/interfaces/User';
+import {Recipe} from '../../components/interfaces/Recipe';
 import {CreateRecipeComponent} from '../../components/modals/create-recipe.component';
 import {BsModalService} from 'ngx-bootstrap';
 
@@ -13,7 +13,7 @@ import {BsModalService} from 'ngx-bootstrap';
 })
 export class MainComponent implements OnInit {
 
-  private users: User[];
+  private recipes: Recipe[];
   private input: string;
   static parameters = [HttpClient, RecipeService, BsModalService];
 
