@@ -14,6 +14,11 @@
       <div class = "col-xs-12 col-sm-6 col-md-4 col-lg-3"> Name of ingredient & Ammount of Ingredient Required: <input value="{{recipe?.ingredients}}"> <br> </div>
       <!--TODO: Will this display the entire array? -->
       <div class = "col-xs-12 col-sm-6 col-md-4 col-lg-3"> User Reviews (and their respective ratings from 1-5 stars): <input value="{{recipe?.user_reviews}}"> <br> </div>
+      <td class="hidden-xs col-sm-6 col-md-4 col-lg-3">
+        <button (click)="editUser(user)"
+                type="button" class="btn btn-default">Edit User
+        </button>
+      </td>
     </div>
   </div>
 </div>

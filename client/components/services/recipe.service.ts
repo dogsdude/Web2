@@ -17,4 +17,15 @@ export class RecipeService {
       .get<Recipe>(`/api/recipes/${recipeId}`)
       .toPromise();
   }
+  updateRecipe(recipe: Recipe): Promise<Recipe> {
+    return this.httpClient
+      .put<Recipe>(`/api/recipes/${recipe._id}`, recipe)
+      .toPromise();
+  }
+
+  deleteRecipe(recipe: Recipe): Promise<Recipe> {
+    return this.httpClient
+      .delete<Recipe>(`/api/recipe/${recipe._id}`)
+      .toPromise();
+  }
 }
