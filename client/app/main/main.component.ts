@@ -37,7 +37,7 @@ export class MainComponent implements OnInit {
     modalRef.content.createdRecipe.subscribe((user) => {
       this.recipeService.createRecipe(user)
         .then(createdRecipe => {
-          modalRef.content.formInfo = `User ${createdRecipe._id} created!`;
+          modalRef.content.formInfo = `Recipe ${createdRecipe._id} created!`;
         })
         .catch(err => {
           console.log(err);
