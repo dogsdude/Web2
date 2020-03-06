@@ -45,7 +45,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let recipe of recipes">
+      <tr *ngFor="let recipe of recipe">
         <td class = "col-xs-12 col-sm-6 col-md-4 col-lg-3">>
           <button [routerLink]="['/recipes', recipe._id]"
                   type="button" class="btn btn-default">{{user._id}}

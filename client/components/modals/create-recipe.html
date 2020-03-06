@@ -48,8 +48,10 @@
         <!--        </div>-->
         <!--  class="col-xs-4 col-sm-4 control-label" //  class="col-xs-8 col-sm-8 col-md-8 col-lg-8"-->
         <label for="directions">Directions</label>
-        <div class="col-xs-8 col-sm-8" *ngFor="let dir of recipe.directions; let i=index;" class="form-control">
-          <input id="directions" type="text" required="required" [ngModel]="i" (ngModelChange)="recipe.directions[i]=$event" placeholder="Directions..." class="form-control"/>
+        <div class="col-xs-8 col-sm-8" class="form-control">
+          <input *ngFor="let dir of recipe.directions; let i=index;"
+                 id="directions" type="text" required="required" [ngModel]="dir" (ngModelChange)="recipe.directions[i]=$event"
+                 placeholder="Directions..." class="form-control"/> <br> <br>
           <button type="button" (click)="addDirectionField()" class="btn btn-success">+</button>
         </div>
 
