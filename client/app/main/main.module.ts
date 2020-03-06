@@ -8,6 +8,7 @@ import { MainComponent } from './main.component';
 import { RecipeService } from "../../components/services/recipe.service";
 import { CreateRecipeModule } from "../../components/modals/create-recipe.module";
 import { ModalModule } from "ngx-bootstrap";
+import { CarouselModule} from "ngx-bootstrap";
 
 
 export const ROUTES: Routes = [
@@ -19,6 +20,7 @@ export const ROUTES: Routes = [
   imports: [
     BrowserModule,
     ModalModule.forRoot(),
+    CarouselModule.forRoot(),
     CreateRecipeModule,
     FormsModule,
     ReactiveFormsModule,

@@ -24,20 +24,20 @@ export class MainComponent implements OnInit {
     this.makeRecipe();
   }
 
-  // public getUserData() {
-  //   this.userService.getAllUsers()
-  //     .then(response => {
-  //       this.users = response.users as User[];
-  //     })
-  //     .catch(this.handleError);
-  // }
+  public getRecipes() {
+    this.recipeService.getAllRecipes()
+      .then(response => {
+        this.recipes = response as Recipe[];
+      })
+      .catch(this.handleError);
+  }
 
   public makeRecipe() {
     const modalRef = this.modalService.show(CreateRecipeComponent);
     modalRef.content.createdRecipe.subscribe((user) => {
       this.recipeService.createRecipe(user)
         .then(createdRecipe => {
-          modalRef.content.formInfo = `Recipe ${createdRecipe._id} created!`;
+          modalRef.content.formInfo = `Recipe created!`;
         })
         .catch(err => {
           console.log(err);

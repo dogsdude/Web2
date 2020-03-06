@@ -17,4 +17,9 @@ export class RecipeService {
       .get<Recipe>(`/api/recipes/${recipeId}`)
       .toPromise();
   }
+  getAllRecipes(): Promise<Recipe> {
+    return this.httpClient
+      .get<Recipe>(`/api/recipes/`)
+      .toPromise();
+  }
 }

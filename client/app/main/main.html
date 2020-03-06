@@ -2,9 +2,32 @@
   <div class="row">
     <div class="col-lg-12">
       <h1 class="page-header">Classy College Comfort: Culinary Cookbook</h1>
+
+      <hr size="6">
+
+      <carousel>
+        <slide>
+          <img src="/main/guac.jpg" alt="first slide" style="display: block; width: 100%;">
+          <div class="carousel-caption d-none d-md-block">
+            <h3>First slide label</h3>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          </div>
+        </slide>
+        <slide>
+          <img src="web-programming-ii/client/app/main/pbj.jpg" alt="second slide" style="display: block; width: 100%;">
+          <div class="carousel-caption d-none d-md-block">
+            <h3>Second slide label</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+        </slide>
+      </carousel>
+
+      <hr size="6">
+
       <button (click)="makeRecipe()" type="button" class="btn btn-default">
         Add a Recipe
       </button>
+
 <!--      <div class="container">
   <div class="row">
     <div class="col-lg-12">
@@ -41,14 +64,15 @@
           </tr>
         </thead>
         <tbody>
-          <tr  *ngFor="let recipe of recipes" >
-    <!--        <td class = "col-xs-12 col-sm-6 col-md-4 col-lg-3">>-->
-    <!--&lt;!&ndash;          <button [routerLink]="['/recipes', recipe._id]"&ndash;&gt;-->
-    <!--&lt;!&ndash;                  type="button" class="btn btn-default">{{recipe._id}}&ndash;&gt;-->
-    <!--&lt;!&ndash;          </button>&ndash;&gt;-->
-    <!--        </td>-->
-            <td class = "col-xs-12 col-sm-6 col-md-4 col-lg-3">{{recipe.name}}</td>
-            <td class = "col-xs-12 col-sm-6 col-md-4 col-lg-3">{{recipe.description}}</td>
+          <tr *ngFor="let recipe of recipes" class = "col-xs-12 col-sm-6 col-md-4 col-lg-3">
+            <td>
+              <button [routerLink]="['/recipes', recipe._id]" type="button" class="btn btn-default">
+                {{recipe.name}}
+              </button>
+            </td>
+            <td  class = "col-xs-12 col-sm-6 col-md-4 col-lg-3">
+              {{recipe.description}}
+            </td>
           </tr>
         </tbody>
       </table>
