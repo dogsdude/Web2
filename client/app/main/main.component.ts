@@ -34,8 +34,8 @@ export class MainComponent implements OnInit {
 
   public makeRecipe() {
     const modalRef = this.modalService.show(CreateRecipeComponent);
-    modalRef.content.createdRecipe.subscribe((user) => {
-      this.recipeService.createRecipe(user)
+    modalRef.content.createdRecipe.subscribe((recipe) => {
+      this.recipeService.createRecipe(recipe)
         .then(createdRecipe => {
           modalRef.content.formInfo = `Recipe created!`;
         })
