@@ -39,9 +39,10 @@ export class RecipeService {
       .toPromise();
   }
 
-  createReview(review : Review): Promise<Review> {
+  createReview(review : Review, recipeID: string): Promise<Review> {
+    console.log("recipeID"+recipeID);
     return this.httpClient
-      .post<Review>('/api/reviews', review)
+      .post<Review>(`/api/recipes/${recipeID}/reviews/`, review)
       .toPromise();
   }
 

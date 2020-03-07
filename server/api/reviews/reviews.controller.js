@@ -48,9 +48,6 @@ export function create(req, res) {
   //  step 4. save (.increment.save)
 
     let review = req.body;
-    if (req.body.date != date.now){
-      review.date = date.now;
-    }
     Recipe.findById(req.params.recipeID)
       //.populate('user_reviews')
       .exec()

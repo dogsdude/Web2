@@ -34,8 +34,6 @@ export class MainComponent implements OnInit {
       .catch(this.handleError);
   }
 
-
-
   public makeRecipe() {
     const modalRef = this.modalService.show(CreateRecipeComponent);
     modalRef.content.createdRecipe.subscribe((recipe) => {

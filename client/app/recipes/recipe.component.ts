@@ -15,12 +15,13 @@ import {CreateReviewComponent} from "../../components/modals/create-review.compo
 
 export class RecipeComponent implements OnInit {
   private recipe: Recipe;
-  static parameters = [ActivatedRoute, RecipeService, BsModalService];
+  static parameters = [ActivatedRoute, RecipeService, BsModalService, HttpClient];
 
-  constructor(private route: ActivatedRoute, private recipeService: RecipeService, private modalService: BsModalService) {
+  constructor(private route: ActivatedRoute, private recipeService: RecipeService, private modalService: BsModalService, private httpClient) {
     this.route = route;
     this.modalService = modalService;
     this.recipeService = recipeService;
+    this.httpClient = httpClient;
 }
 
   public editRecipe(recipe: Recipe) {
@@ -40,10 +41,10 @@ export class RecipeComponent implements OnInit {
     });
   }
 
-  public makeReview() {
+  public makeReview(recipeID: string) {
     const modalRef = this.modalService.show(CreateReviewComponent);
     modalRef.content.createdReview.subscribe((review) => {
-      this.recipeService.createReview(review)
+      this.recipeService.createReview(review, recipeID)
         .then(createdReview => {
           modalRef.content.formInfo = `Review created!`;
         })
