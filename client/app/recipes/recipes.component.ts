@@ -2,15 +2,13 @@ import {Component, OnInit} from '@angular/core';
 import {Recipe} from '../../components/interfaces/Recipe';
 import {RecipeService} from '../../components/services/recipe.service';
 import {ActivatedRoute} from '@angular/router';
-import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {BsModalService} from 'ngx-bootstrap';
 import {UpdateRecipeComponent} from "../../components/modals/update-recipe.component";
 
 @Component({
   selector: 'recipes',
-  template: require('./recipes.html'),
-  styles: [require('./recipes.scss')],
+  template: require('./recipes.html')
 })
 
 export class RecipesComponent implements OnInit {

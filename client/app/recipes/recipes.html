@@ -1,24 +1,40 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h1 class= "col-xs-12 page-header">Details for Recipe {{recipe?._id || ""}}</h1>
-      <div class = "col-xs-12 col-sm-6 col-md-4 col-lg-3"> Id: <input value="{{recipe?._id}}"> <br> </div>
-      <div class = "col-xs-12 col-sm-6 col-md-4 col-lg-3"> Name: <input value="{{recipe?.name}}"> <br> </div>
-      <div class = "col-xs-12 col-sm-6 col-md-4 col-lg-3"> Description: <input value="{{recipe?.description}}"> <br> </div>
-      <div class = "col-xs-12 col-sm-6 col-md-4 col-lg-3"> Image of recipe: <input value="{{recipe?.img_url}}"> <br> </div>
-      <div class = "col-xs-12 col-sm-6 col-md-4 col-lg-3"> Time to prepare: <input value="{{recipe?.prep_time}}"> <br> </div>
-      <div class = "col-xs-12 col-sm-6 col-md-4 col-lg-3"> Time to cook: <input value="{{recipe?.cook_time}}"> <br> </div>
-      <div class = "col-xs-12 col-sm-6 col-md-4 col-lg-3"> Directions: <input value="{{recipe?.directions}}"> <br> </div>
-      <!-- TODO: Does this correctly display our array of ingredient names & ammounts? -->
-      <h4>Ingredients:</h4>
-      <div class = "col-xs-12 col-sm-6 col-md-4 col-lg-3"> Name of ingredient & Ammount of Ingredient Required: <input value="{{recipe?.ingredients}}"> <br> </div>
-      <!--TODO: Will this display the entire array? -->
-      <div class = "col-xs-12 col-sm-6 col-md-4 col-lg-3"> User Reviews (and their respective ratings from 1-5 stars): <input value="{{recipe?.user_reviews}}"> <br> </div>
+      <h1 class= "col-xs-12 page-header">{{recipe?.name || ""}}</h1>
+
+      <h4 class = "col-xs-12 col-sm-12 col-md-12 col-lg-12"> Image of recipe:</h4> <div class="centered">{{recipe?.img_url}}</div> <br>
+      <h4 class = "col-xs-12 col-sm-12 col-md-12 col-lg-12"> Name:</h4> <div>{{recipe?.name}}</div> <br>
+      <h4 class = "col-xs-12 col-sm-12 col-md-12 col-lg-12"> Description:</h4> <div>{{recipe?.description}}</div> <br>
+      <h4 class = "col-xs-12 col-sm-12 col-md-12 col-lg-12"> Time to prepare:</h4> <div>{{recipe?.prep_time}}</div> <br>
+      <h4 class = "col-xs-12 col-sm-12 col-md-12 col-lg-12"> Time to cook:</h4> <div>{{recipe?.cook_time}}</div> <br>
+
+      <h4 class = "col-xs-12 col-sm-12 col-md-12 col-lg-12">Ingredients:</h4>
+      <div class = "col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <ul>
+          <li  *ngFor="let ing of recipe.ingredients" >
+            {{ing.ingredient_name}}
+          </li>
+        </ul>
+      </div>
+
+      <h4 class = "col-xs-12 col-sm-12 col-md-12 col-lg-12">Directions</h4>
+      <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <ol>
+          <li *ngFor="let dir of recipe.directions" >
+            {{dir}}"
+          </li>
+        </ol>
+         <br>
+      </div>
+
       <td class="hidden-xs col-sm-6 col-md-4 col-lg-3">
+
         <button (click)="editRecipe(recipe)"
                 type="button" class="btn btn-default">Edit Recipe
         </button>
       </td>
+      <div class = "col-xs-12 col-sm-6 col-md-4 col-lg-3"> User Reviews (and their respective ratings from 1-5 stars): <input value="{{recipe?.user_reviews}}"> <br> </div>
     </div>
   </div>
 </div>
