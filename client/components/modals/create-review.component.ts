@@ -15,11 +15,11 @@ export class CreateReviewComponent {
   formInfo: String;
   @Output()
   private review: Review = {
-    _id:undefined,
+    _id: undefined,
     review_desc: undefined,
     review_rating: undefined,
     date: undefined,
-    user: undefined
+    by_user: undefined
   };
 
   createdReview: EventEmitter<Review> = new EventEmitter<Review>();

@@ -4,5 +4,5 @@ export interface Review {
   review_desc: string;
   review_rating: number;
   date: Date;
-  user: User;
+  by_user: User;
 }
