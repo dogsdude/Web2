@@ -19,7 +19,7 @@ export class CreateReviewComponent {
     review_desc: undefined,
     review_rating: undefined,
     date: undefined,
-    user: undefined
+    by_user: undefined
   };
 
   createdReview: EventEmitter<Review> = new EventEmitter<Review>();
