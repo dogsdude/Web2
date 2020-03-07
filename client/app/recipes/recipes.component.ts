@@ -27,8 +27,8 @@ export class RecipesComponent implements OnInit {
       recipe
     }
     const modalRef = this.modalService.show(UpdateRecipeComponent, {initialState});
-    modalRef.content.updatedUser.subscribe(() => {
-      this.userService.updateUser(user)
+    modalRef.content.updatedRecipe.subscribe(() => {
+      this.recipeService.updateRecipe(recipe)
         .then(updatedUser => {
           modalRef.content.formInfo = `User ${updatedUser._id} updated!`;
         })
