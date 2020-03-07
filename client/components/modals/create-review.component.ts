@@ -15,7 +15,7 @@ export class CreateReviewComponent {
   formInfo: String;
   @Output()
   private review: Review = {
-    _id:undefined,
+    _id: undefined,
     review_desc: undefined,
     review_rating: undefined,
     date: undefined,
