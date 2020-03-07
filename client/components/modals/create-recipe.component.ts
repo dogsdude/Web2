@@ -41,6 +41,10 @@ export class CreateRecipeComponent {
     this.createdRecipe.emit(this.recipe);
   }
 
+  trackByFn(index: any, item: any) {
+    return index;
+  }
+
 }
   // addIngredient(string, number) {
   //   this.ingredients.push

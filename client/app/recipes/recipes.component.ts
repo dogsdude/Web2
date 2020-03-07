@@ -5,6 +5,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {BsModalService} from 'ngx-bootstrap';
+import {UpdateRecipeComponent} from "../../components/modals/update-recipe.component";
 
 @Component({
   selector: 'recipes',
@@ -25,7 +26,7 @@ export class RecipesComponent implements OnInit {
     const initialState = {
       recipe
     }
-    const modalRef = this.modalService.show(UpdateUseComponent, {initialState});
+    const modalRef = this.modalService.show(UpdateRecipeComponent, {initialState});
     modalRef.content.updatedUser.subscribe(() => {
       this.userService.updateUser(user)
         .then(updatedUser => {
