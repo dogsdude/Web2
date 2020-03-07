@@ -29,33 +29,12 @@
           <input type="number" id="cook_time" name="cook" required="required" [(ngModel)]="recipe.cook_time" class="form-control"/><br>
         </div>
 
-        <!-- div is a row / entire block gets iterated-->
-        <!-- for directions (primitive)
-        print out input and value = current pos,
-        [ngModelChange] recipe.ingredients[idx] = $event
-        let ing of ingredients
-         //
-         ingredient can push stubbed ingredient object
-         make all the ingredient stuff (1+fields) all show up with css on one row -->
-
-        <!--        <label for="ingredients" class="col-xs-4 col-sm-4 control-label">Ingredient Name</label>-->
-        <!--        <div class="col-xs-8 col-sm-8">-->
-        <!--          <input id="ingredients" name="ingredients" required="required" [formControlName]="recipe.ingredients" class="form-array"/>-->
-        <!--        </div>-->
-        <!--        <label for="ingredient1-amt" class="col-xs-4 col-sm-4 control-label">Amount</label>-->
-        <!--        <div class="col-xs-8 col-sm-8">-->
-        <!--          <input type="number" id="ingredient1-amt" name="ingredients[0].ingredient_amt" required="required" [(ngModel)]="recipe.ingredients" class="form-control"/>-->
-        <!--        </div>-->
-        <!--  class="col-xs-4 col-sm-4 control-label" //  class="col-xs-8 col-sm-8 col-md-8 col-lg-8"-->
-
         <label for="ingredients">(Ingredients)</label>
         <button type="button" (click)="recipe.ingredients.push({ingredient_name:''})" class="btn btn-success">+</button>
         <div class="col-xs-8 col-sm-8" class="form-control">
           <input id="ingredients" *ngFor="let ing of recipe.ingredients; let i=index;" type="text" required="required"
                  [(ngModel)]="ing.ingredient_name" placeholder="e.g. 1 Tbsp Olive Oil" class="form-control"/>
         </div> <br>
-
-
 
         <label for="directions">(Directions)</label>
         <button type="button" (click)="addDirectionField()" class="btn btn-success">+</button>
@@ -64,13 +43,6 @@
                  id="directions" type="text" required="required" [ngModel]="dir" (ngModelChange)="recipe.directions[i]=$event"
                  placeholder="Directions..." class="form-control"/> <br> <br>
         </div>
-
-        <!-- with an array of objects, you don't need a ngmodelchange $event-->
-
-
-        <!--        <div class="col-xs-6 col-sm-6">-->
-        <!--          <input id="directions" name="directions" required="required" [formArrayName]="recipe.directions" class="form-array"/>-->
-        <!--        </div>-->
 
       </div>
     </div>
@@ -81,16 +53,3 @@
   </div>
 </div>
 
-<!--        &lt;!&ndash;TODO does this shit work&ndash;&gt;-->
-<!--        <label for="ingredients" class="col-xs-4 col-sm-4 control-label">Ingredients</label>-->
-<!--        <div *ngFor="let ing of recipe.ingredients; index as idx" class="form-group">-->
-<!--          <input id="ingredients" [(ngModel)]="idx" placeholder="e.g. 1 Tbsp Olive Oil" class="form-control">-->
-
-<!--        </div>-->
-<!--        <button type="button" [ngmodelchange] class="btn btn-success">+</button>-->
-
-<!--        <select [(ngModel)]="data" (ngModelChange)="recipe.ingredients[idx]($event)" name="data">-->
-<!--          <option *ngFor="let currentData of allData" [ngValue]="currentData">-->
-<!--            {{data.name}}-->
-<!--          </option>-->
-<!--        </select>-->

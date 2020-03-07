@@ -2,6 +2,8 @@ import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {Recipe} from "../interfaces/Recipe";
 import {Recipes} from "../interfaces/Recipes";
+import {Review} from "../interfaces/Review";
+import {Reviews} from "../interfaces/Reviews";
 
 @Injectable()
 export class RecipeService {
@@ -33,7 +35,33 @@ export class RecipeService {
 
   deleteRecipe(recipe: Recipe): Promise<Recipe> {
     return this.httpClient
-      .delete<Recipe>(`/api/recipe/${recipe._id}`)
+      .delete<Recipe>(`/api/recipes/${recipe._id}`)
       .toPromise();
   }
+
+  createReview(review : Review): Promise<Review> {
+    return this.httpClient
+      .post<Review>('/api/reviews', review)
+      .toPromise();
+  }
+
+  getAllReviews(): Promise<Reviews> {
+    return this.httpClient
+      .get<Reviews>('/api/reviews/')
+      .toPromise();
+  }
+
+  updateReview(review: Review): Promise<Review> {
+    return this.httpClient
+      .put<Review>(`/api/reviews/${review._id}`, review)
+      .toPromise();
+  }
+
+
+  deleteReview(review: Review): Promise<Review> {
+    return this.httpClient
+      .delete<Review>(`/api/reviews/${review._id}`)
+      .toPromise();
+  }
+
 }
