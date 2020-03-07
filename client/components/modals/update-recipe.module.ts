@@ -25,5 +25,5 @@ import {ModalModule} from 'ngx-bootstrap';
     UpdateRecipeComponent,
   ]
 })
-export class UpdateUserModule {
+export class UpdateRecipeModule {
 }

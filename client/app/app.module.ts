@@ -14,6 +14,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { MainModule } from './main/main.module';
+import {RecipesModule} from "./recipes/recipes.module";
+import {CreateRecipeModule} from "../components/modals/create-recipe.module";
+import {UpdateRecipeComponent} from "../components/modals/update-recipe.component";
+import {UpdateRecipeModule} from "../components/modals/update-recipe.module";
 
 export function tokenGetter() {
     return localStorage.getItem('id_token');
@@ -28,6 +32,9 @@ const appRoutes: Routes = [{ path: '',
     imports: [
         BrowserModule,
         HttpClientModule,
+        RecipesModule,
+        CreateRecipeModule,
+        UpdateRecipeModule,
 
         RouterModule.forRoot(appRoutes, { enableTracing: process.env.NODE_ENV === 'development' }),
         MainModule
