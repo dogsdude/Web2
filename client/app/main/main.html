@@ -3,8 +3,6 @@
     <div class="col-lg-12">
       <h1 class="page-header">Classy College Comfort: Culinary Cookbook</h1>
 
-      <hr size="6">
-
       <carousel>
         <slide>
           <img src="../../assets/images/guac.jpg" alt="first slide" style="display: block; width: 100%;">
@@ -64,8 +62,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let recipe of recipes" class = "col-xs-12 col-sm-6 col-md-4 col-lg-3">
-            <td>
+          <tr *ngFor="let recipe of recipes">
+            <td  class = "col-xs-12 col-sm-6 col-md-4 col-lg-3">
               <button [routerLink]="['/recipes', recipe._id]" type="button" class="btn btn-default">
                 {{recipe.name}}
               </button>

@@ -1,6 +1,8 @@
 import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {Recipe} from "../interfaces/Recipe";
+import {Recipes} from "../interfaces/Recipes";
+
 @Injectable()
 export class RecipeService {
   static parameters = [HttpClient];
@@ -18,10 +20,10 @@ export class RecipeService {
       .toPromise();
   }
 
-  getAllRecipes(): Promise<Recipe> {
+  getAllRecipes(): Promise<Recipes> {
     return this.httpClient
-      .get<Recipe>(`/api/recipes/`)
-      .toPromise()
+      .get<Recipes>('/api/recipes/')
+      .toPromise();
   }
   updateRecipe(recipe: Recipe): Promise<Recipe> {
     return this.httpClient

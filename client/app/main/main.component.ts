@@ -22,15 +22,19 @@ export class MainComponent implements OnInit {
     this.recipeService = recipeService;
     this.modalService = modalService;
     this.makeRecipe();
+    this.getRecipes();
   }
 
   public getRecipes() {
     this.recipeService.getAllRecipes()
       .then(response => {
-        this.recipes = response as Recipe[];
+        this.recipes = response.recipes as Recipe[];
+        console.log(this.recipes);
       })
       .catch(this.handleError);
   }
+
+
 
   public makeRecipe() {
     const modalRef = this.modalService.show(CreateRecipeComponent);
