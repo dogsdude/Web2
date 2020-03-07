@@ -11,12 +11,13 @@ import {UpdateRecipeComponent} from "../../components/modals/update-recipe.compo
   template: require('./recipes.html')
 })
 
-export class RecipesComponent implements OnInit {
+export class RecipeComponent implements OnInit {
   private recipe: Recipe;
-  static parameters = [ActivatedRoute, RecipeService];
+  static parameters = [ActivatedRoute, RecipeService, BsModalService];
 
-  constructor(private route: ActivatedRoute, private recipeService: RecipeService, private modalService:BsModalService) {
+  constructor(private route: ActivatedRoute, private recipeService: RecipeService, private modalService: BsModalService) {
     this.route = route;
+    this.modalService = modalService;
     this.recipeService = recipeService;
 }
 
@@ -28,7 +29,7 @@ export class RecipesComponent implements OnInit {
     modalRef.content.updatedRecipe.subscribe(() => {
       this.recipeService.updateRecipe(recipe)
         .then(updatedUser => {
-          modalRef.content.formInfo = `User ${updatedUser._id} updated!`;
+          modalRef.content.formInfo = 'Recipe updated!';
         })
         .catch(err => {
           console.log(err);

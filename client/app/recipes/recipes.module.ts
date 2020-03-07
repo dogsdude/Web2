@@ -8,11 +8,11 @@ import { TooltipModule } from 'ngx-bootstrap';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { RecipesComponent } from './recipes.component';
+import { RecipeComponent } from './recipe.component';
 
 export const ROUTES: Routes = [
   //TODO: Is this the correct route?
-  { path: 'recipes/:id', component: RecipesComponent},
+  { path: 'recipes/:id', component: RecipeComponent},
 ];
 
 @NgModule({
@@ -25,11 +25,11 @@ export const ROUTES: Routes = [
     TooltipModule.forRoot(),
   ],
   declarations: [
-    RecipesComponent
+    RecipeComponent
   ],
 
   exports: [
-    RecipesComponent
+    RecipeComponent
   ],
 
   providers: [
