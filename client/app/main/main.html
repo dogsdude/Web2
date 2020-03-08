@@ -4,18 +4,12 @@
       <h1 class="page-header">Classy College Comfort: Culinary Cookbook</h1>
 
       <carousel>
-        <slide>
-          <img src="../../assets/images/guac.jpg" alt="first slide" style="display: block; width: 100%;">
+        <slide *ngFor="let recipe of recipes">
+          console.log(recipe);
+          <img src="{{recipe?.img_url}}" alt="first slide" style="display: block; width: 100%;">
           <div class="carousel-caption d-none d-md-block">
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </div>
-        </slide>
-        <slide>
-          <img src="../../assets/images/pbj.jpg" alt="second slide" style="display: block; width: 100%;">
-          <div class="carousel-caption d-none d-md-block">
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <h3>{{recipe?.name}}</h3>
+            <p>{{recipe?.description}}</p>
           </div>
         </slide>
       </carousel>
@@ -25,34 +19,6 @@
       <button (click)="makeRecipe()" type="button" class="btn btn-default">
         Add a Recipe
       </button>
-
-<!--      <div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Lab 15: Bootstrap CSS</h1>
-
-      <h1>Enter a value here: <input [(ngModel)]="input"></h1>
-
-      <h2>You entered: {{ input }}</h2>
-
-      <h1>Contents of values array:</h1>
-      <ul>
-        <li *ngFor="let value of values">{{ value }}</li>
-      </ul>
-
-      <hr size="5">
-      <h1>{{ valueToSquare }} * {{ valueToSquare }} = {{ valueToSquare | square }}</h1>
-
-      <hr size="5">
-      <table class="table-responsive table-striped table-bordered">
-        <thead>
-        <tr>
-          <th class = "col-xs-12 col-sm-6 col-md-4 col-lg-3">Id</th>
-          <th class = "col-xs-12 col-sm-6 col-md-4 col-lg-3">Age</th>
-          <th class = "col-xs-12 col-sm-6 col-md-4 col-lg-3">First Name</th>
-          <th class = "hidden-xs col-sm-6 col-md-4 col-lg-3">Middle Name</th>
-          <th class = "col-xs-12 col-sm-6 col-md-4 col-lg-3">Last Name</th>
-          Hide address 1 & 2 at small breakpoint -->
       <hr size="6">
       <table class="table-responsive table-striped table-bordered">
         <thead>
@@ -64,15 +30,18 @@
         <tbody>
           <tr *ngFor="let recipe of recipes">
             <td  class = "col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              <button [routerLink]="['/recipes', recipe._id]" type="button" class="btn btn-default">
-                {{recipe.name}}
+              <button [routerLink]="['/recipes', recipe?._id]" type="button" class="btn btn-default">
+                {{recipe?.name}}
               </button>
             </td>
             <td  class = "col-xs-12 col-sm-6 col-md-4 col-lg-3">
-              {{recipe.description}}
+              {{recipe?.description}}
             </td>
           </tr>
         </tbody>
+        <td class="col-xs-12 col-sm-12 col-md-1 col-lg-1">{{recipes[0]?.name}}</td>
+        <td class="col-xs-12 col-sm-12 col-md-1 col-lg-1">{{recipes[0]?.description}}</td>
+
       </table>
     </div>
   </div>
