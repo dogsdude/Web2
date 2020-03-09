@@ -4,18 +4,14 @@
       <h1 class="page-header">Classy College Comfort: Culinary Cookbook</h1>
 
       <carousel>
-        <slide>
-          <img src="../../assets/images/guac.jpg" alt="first slide" style="display: block; width: 100%;">
+        <slide *ngFor="let recipe of recipes">
+          console.log(recipe);
+          <img src="{{recipe?.img_url}}" alt="first slide" style="display: block; width: 100%;">
           <div class="carousel-caption d-none d-md-block">
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </div>
-        </slide>
-        <slide>
-          <img src="../../assets/images/pbj.jpg" alt="second slide" style="display: block; width: 100%;">
-          <div class="carousel-caption d-none d-md-block">
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <button [routerLink]="['/recipes', recipe._id]" type="button" class="btn btn-default">
+              {{recipe.name}}
+            </button>
+            <p>{{recipe?.description}}</p>
           </div>
         </slide>
       </carousel>

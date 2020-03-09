@@ -21,7 +21,7 @@ export class MainComponent implements OnInit {
     this.http = http;
     this.recipeService = recipeService;
     this.modalService = modalService;
-    this.makeRecipe();
+    //this.makeRecipe();
     this.getRecipes();
   }
 
