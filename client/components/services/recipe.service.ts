@@ -24,7 +24,7 @@ export class RecipeService {
 
   getAllRecipes(): Promise<Recipes> {
     return this.httpClient
-      .get<Recipes>('/api/recipes/')
+      .get<Recipes>('/api/recipes')
       .toPromise();
   }
   updateRecipe(recipe: Recipe): Promise<Recipe> {
@@ -42,13 +42,13 @@ export class RecipeService {
   createReview(review : Review, recipeID: string): Promise<Review> {
     console.log("recipeID"+recipeID);
     return this.httpClient
-      .post<Review>(`/api/recipes/${recipeID}/reviews/`, review)
+      .post<Review>(`/api/recipes/${recipeID}/reviews`, review)
       .toPromise();
   }
 
   getAllReviews(): Promise<Reviews> {
     return this.httpClient
-      .get<Reviews>('/api/reviews/')
+      .get<Reviews>('/api/reviews')
       .toPromise();
   }
 

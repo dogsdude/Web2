@@ -9,10 +9,10 @@ export function index(req,res) {
   Recipe.find()
     .populate("user_reviews")
     .exec()
-    .then(function(recipe) {
-      console.log(recipe.user_reviews);
+    .then(function(recipes) {
+      console.log(recipes.user_reviews);
       res.json({
-        recipe
+        recipes
       });
     })
     .catch(function(err) {
