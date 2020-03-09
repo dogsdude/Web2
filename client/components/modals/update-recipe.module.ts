@@ -3,10 +3,12 @@ import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 import {UpdateRecipeComponent} from './update-recipe.component';
 import {ModalModule} from 'ngx-bootstrap';
+import {RatingModule} from "ngx-bootstrap";
 
 @NgModule({
   imports: [
     ModalModule.forRoot(),
+    RatingModule.forRoot(),
     BrowserModule,
     FormsModule
   ],

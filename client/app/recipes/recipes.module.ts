@@ -4,13 +4,15 @@ import { FormsModule } from '@angular/forms';
 
 import { RouterModule, Routes } from '@angular/router';
 
-import { TooltipModule } from 'ngx-bootstrap';
+import {RatingModule, TooltipModule} from 'ngx-bootstrap';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { RecipeComponent } from './recipe.component';
 
 import { CreateReviewModule } from "../../components/modals/create-review.module";
+
+import { UpdateReviewModule } from "../../components/modals/update-review.module";
 
 export const ROUTES: Routes = [
   //TODO: Is this the correct route?
@@ -23,9 +25,11 @@ export const ROUTES: Routes = [
     FormsModule,
     BrowserAnimationsModule,
     CreateReviewModule,
+    UpdateReviewModule,
     RouterModule.forChild(ROUTES),
 
     TooltipModule.forRoot(),
+    RatingModule,
   ],
   declarations: [
     RecipeComponent

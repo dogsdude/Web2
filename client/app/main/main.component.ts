@@ -4,6 +4,7 @@ import {RecipeService} from "../../components/services/recipe.service";
 import {Recipe} from '../../components/interfaces/Recipe';
 import {CreateRecipeComponent} from '../../components/modals/create-recipe.component';
 import {BsModalService} from 'ngx-bootstrap';
+import {Recipes} from "../../components/interfaces/Recipes";
 
 
 @Component({
@@ -21,7 +22,6 @@ export class MainComponent implements OnInit {
     this.http = http;
     this.recipeService = recipeService;
     this.modalService = modalService;
-    this.makeRecipe();
     this.getRecipes();
   }
 
@@ -39,7 +39,7 @@ export class MainComponent implements OnInit {
     modalRef.content.createdRecipe.subscribe((recipe) => {
       this.recipeService.createRecipe(recipe)
         .then(createdRecipe => {
-          modalRef.content.formInfo = `Recipe created!`;
+          modalRef.content.formInfo = 'Recipe added!';
         })
         .catch(err => {
           console.log(err);

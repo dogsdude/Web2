@@ -10,6 +10,7 @@ import { ModalModule } from "ngx-bootstrap";
 import { CarouselModule} from "ngx-bootstrap";
 import { RecipesModule } from "../recipes/recipes.module";
 import { UpdateRecipeModule } from "../../components/modals/update-recipe.module";
+import { RatingModule} from "ngx-bootstrap";
 
 
 export const ROUTES: Routes = [
@@ -22,6 +23,7 @@ export const ROUTES: Routes = [
     BrowserModule,
     ModalModule.forRoot(),
     CarouselModule.forRoot(),
+    RatingModule.forRoot(),
     CreateRecipeModule,
     UpdateRecipeModule,
     RecipesModule,

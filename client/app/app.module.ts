@@ -16,8 +16,12 @@ import { AppComponent } from './app.component';
 import { MainModule } from './main/main.module';
 import {RecipesModule} from "./recipes/recipes.module";
 import {CreateRecipeModule} from "../components/modals/create-recipe.module";
-import {UpdateRecipeComponent} from "../components/modals/update-recipe.component";
 import {UpdateRecipeModule} from "../components/modals/update-recipe.module";
+import {RatingModule} from "ngx-bootstrap";
+import {CreateReviewModule} from "../components/modals/create-review.module";
+import {DeleteReviewModule} from "../components/modals/delete-review.module";
+import {DeleteRecipeComponent} from "../components/modals/delete-recipe.component";
+import {DeleteRecipeModule} from "../components/modals/delete-recipe.module";
 
 export function tokenGetter() {
     return localStorage.getItem('id_token');
@@ -35,12 +39,16 @@ const appRoutes: Routes = [{ path: '',
         RecipesModule,
         CreateRecipeModule,
         UpdateRecipeModule,
-
+        DeleteRecipeModule,
+        RatingModule.forRoot(),
+        CreateReviewModule,
+        UpdateRecipeModule,
+        DeleteReviewModule,
         RouterModule.forRoot(appRoutes, { enableTracing: process.env.NODE_ENV === 'development' }),
         MainModule
     ],
     declarations: [
-        AppComponent,
+        AppComponent
     ],
     bootstrap: [AppComponent],
 })

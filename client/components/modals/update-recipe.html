@@ -2,51 +2,49 @@
   <div class="modal-header">
     <button type="button" (click)="bsModalRef.hide()" class="close"><span
       aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-    <h4 id="myModalLabel" class="modal-title">Update Your Recipe! Recipe: {{recipe._id}}</h4>
+    <h4 id="myModalLabel" class="modal-title">Update This Recipe!</h4>
   </div>
   <div class="modal-body">
     <div role="alert" [hidden]="!formError" class="alert alert-danger">{{ formError }}</div>
     <div role="alert" [hidden]="!formInfo" class="alert alert-info">{{ formInfo }}</div>
     <div class="form-group">
-      <label for="name" class="col-xs-4 col-sm-4 control-label">Recipe Name</label>
-      <div class="col-xs-8 col-sm-8">
+      <label for="name" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 control-label">Recipe Name</label>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 control-label">
         <input id="name" name="name" required="required" [(ngModel)]="recipe.name" class="form-control"/>
       </div>
-      <label for="desc" class="col-xs-4 col-sm-4 control-label">Description</label>
-      <div class="col-xs-8 col-sm-8">
+      <label for="desc" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 control-label">Description</label>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 control-label">
         <input id="desc" name="desc" required="required" [(ngModel)]="recipe.description" class="form-control"/>
       </div>
-      <label for="img_url" class="col-xs-4 col-sm-4 control-label">Image</label>
-      <div class="col-xs-8 col-sm-8">
+      <label for="img_url" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 control-label"></label>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 control-label">
         <input id="img_url" name="img_url" required="required" [(ngModel)]="recipe.img_url" class="form-control"/>
       </div>
-      <label for="prep_time" class="col-xs-4 col-sm-4 control-label">Prep Time (Minutes)</label>
-      <div class="col-xs-8 col-sm-8">
+      <label for="prep_time" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 control-label">Prep Time (Minutes)</label>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 control-label">
         <input type="number" id="prep_time" name="prep" required="required" [(ngModel)]="recipe.prep_time"
                class="form-control"/>
       </div>
-      <label for="cook_time" class="col-xs-4 col-sm-4 control-label">Cook Time (Minutes)</label>
-      <div class="col-xs-8 col-sm-8">
+      <label for="cook_time" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 control-label">Cook Time (Minutes)</label>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 control-label">
         <input type="number" id="cook_time" name="cook" required="required" [(ngModel)]="recipe.cook_time"
                class="form-control"/><br>
       </div>
 
-      <label for="ingredients">(Ingredients)</label>
-      <button type="button" (click)="recipe.ingredients.push({ingredient_name:''})" class="btn btn-success">+</button>
-      <div class="col-xs-8 col-sm-8" class="form-control">
+      <label for="ingredients" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> Ingredients </label>
+      <button type="button" (click)="recipe.ingredients.push({ingredient_name:''})" class="btn btn-success">+</button> <br> <br>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <input id="ingredients" *ngFor="let ing of recipe.ingredients; let i=index;" type="text" required="required"
-               [(ngModel)]="ing.ingredient_name" placeholder="e.g. 1 Tbsp Olive Oil" class="form-control"/>
+               [(ngModel)]="ing.ingredient_name" placeholder="e.g. 1 Tbsp Olive Oil" class="form-control"/>  <br>
       </div>
-      <br>
 
+      <label for="directions" class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> Directions </label>
+      <button type="button" (click)="addDirectionField()" class="btn btn-success">+</button> <br> <br>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <input *ngFor="let dir of recipe.directions; let i=index; trackBy:trackByFn"
 
-      <label for="directions">(Directions)</label>
-      <button type="button" (click)="addDirectionField()" class="btn btn-success">+</button>
-      <div class="col-xs-8 col-sm-8" class="form-control">
-        <input *ngFor="let dir of recipe.directions; let i=index;"
-               id="directions" type="text" required="required" [ngModel]="dir"
-               (ngModelChange)="recipe.directions[i]=$event"
-               placeholder="Directions..." class="form-control"/> <br> <br>
+               id="directions" type="text" required="required" [ngModel]="dir" (ngModelChange)="recipe.directions[i]=$event"
+               placeholder="Directions..." class="form-control"/> <br>
       </div>
 
     </div>
@@ -56,8 +54,7 @@
       Cancel
     </button>
     <button type="submit" class="btn btn-primary" (click)="updateRecipe()">Update</button>
-    <!--TODO:Does this type "delete" work?-->
-    <button type="delete" class="btn btn-primary" (click)="deleteRecipe()">Delete</button>
+    <button type="delete" class="btn btn-primary" (click)="deleteRecipe(recipe)">Delete</button>
   </div>
 
 </div>

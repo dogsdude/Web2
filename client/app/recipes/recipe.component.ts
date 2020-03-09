@@ -6,7 +6,10 @@ import {HttpClient} from '@angular/common/http';
 import {BsModalService} from 'ngx-bootstrap';
 import {UpdateRecipeComponent} from "../../components/modals/update-recipe.component";
 import {CreateRecipeComponent} from "../../components/modals/create-recipe.component";
+import {UpdateReviewComponent} from "../../components/modals/update-review.component";
 import {CreateReviewComponent} from "../../components/modals/create-review.component";
+import {BasicComponent} from "../../components/modals/BasicRating";
+import {Review} from "../../components/interfaces/Review";
 
 @Component({
   selector: 'recipes',
@@ -41,6 +44,10 @@ export class RecipeComponent implements OnInit {
     });
   }
 
+  public deleteRecipe(recipe: Recipe) {
+
+  }
+
   public makeReview(recipeID: string) {
     const modalRef = this.modalService.show(CreateReviewComponent);
     modalRef.content.createdReview.subscribe((review) => {
@@ -53,6 +60,38 @@ export class RecipeComponent implements OnInit {
           modalRef.content.formError = err.error.message;
         });
     });
+  }
+
+  public editReview(review: Review){
+    const initialState = {
+      review
+    }
+    const modalRef = this.modalService.show(UpdateReviewComponent, {initialState});
+    modalRef.content.updatedReview.subscribe(() => {
+      this.recipeService.updateReview(review)
+        .then(updatedReview => {
+          modalRef.content.formInfo = 'Review updated!';
+        })
+        .catch(err => {
+          console.log(err);
+          modalRef.content.formError = err.error.message;
+        });
+    });
+  }
+
+  public deleteReview(review: Review) {
+    const modalRef = this.modalService.show(UpdateReviewComponent);
+    modalRef.content.updatedReview.subscribe(() => {
+      this.recipeService.deleteReview(review)
+        .then(updatedReview => {
+          modalRef.content.formInfo = `Review by ${review.by_user} deleted.`
+        })
+        .catch(err => {
+          console.log(err);
+          modalRef.content.formError = err.error.message;
+        });
+    });
+
   }
 
   ngOnInit() {
