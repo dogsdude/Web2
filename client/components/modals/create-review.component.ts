@@ -30,4 +30,20 @@ export class CreateReviewComponent {
   createReview() {
     this.createdReview.emit(this.review);
   }
+
+
+  max: number = 5;
+  isReadonly: boolean = true;
+  overStar: number | undefined;
+  percent: number;
+
+  hoveringOver(value: number): void {
+    this.overStar = value;
+    this.percent = (value / this.max) * 100;
+  }
+
+  resetStar(): void {
+    this.overStar = void 0;
+  }
+
 }

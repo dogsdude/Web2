@@ -8,16 +8,12 @@
     <div role="alert" [hidden]="!formError" class="alert alert-danger">{{ formError }}</div>
     <div role="alert" [hidden]="!formInfo" class="alert alert-info">{{ formInfo }}</div>
     <div class="form-group">
-
-      <label class="col-xs-4 col-sm-4 control-label">Rating: </label>
-      <div class="col-xs-8 col-sm-8">
+      <div> <b>Rating: </b>
         <rating [(ngModel)]="review.review_rating" [max]="5" [readonly]="false"
                 (onHover)="hoveringOver($event)" (onLeave)="resetStar()"
                 [titles]="['one','two','three']"></rating>
       </div>
-
-      <label for="desc" class="col-xs-4 col-sm-4 control-label">Description: </label>
-      <div class="col-xs-8 col-sm-8">
+      <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <input id="desc" name="desc" required="required" [(ngModel)]="review.review_desc" class="form-control"/>
       </div>
 
