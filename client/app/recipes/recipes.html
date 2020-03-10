@@ -1,16 +1,18 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
+      <hr size="6">
       <button [routerLink]="['/home']" type="button" class="btn btn-default">
         Home
       </button>
+      <hr size="6">
       <h1 class= "col-xs-12 page-header">{{recipe?.name || ""}}
 
         <button (click)="editRecipe(recipe)"
                 type="button" class="btn btn-default">Edit Recipe
         </button> </h1>
 
-      <h4 class = "col-xs-12 col-sm-12 col-md-12 col-lg-12"> Image of recipe:</h4> <div class="centered">{{recipe?.img_url}}</div> <br>
+      <img src="{{recipe?.img_url}}" alt="{{recipe?.name}}" style="display: block; width: 100%;">
       <h4 class = "col-xs-12 col-sm-12 col-md-12 col-lg-12"> Name:</h4> <div>{{recipe?.name}}</div> <br>
       <h4 class = "col-xs-12 col-sm-12 col-md-12 col-lg-12"> Description:</h4> <div>{{recipe?.description}}</div> <br>
       <div class = "col-xs-12 col-sm-4 col-md-3 col-lg-2"><b>Prep Time:</b> {{recipe?.prep_time}} minutes</div>
