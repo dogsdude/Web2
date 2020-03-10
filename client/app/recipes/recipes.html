@@ -1,18 +1,88 @@
+<style>
+  /*hr divider code https://codepen.io/astrotim/pen/BfDIw*/
+  @font-face{
+    font-family:"Fancy";
+    src: url("AintNothingFancy.ttf")
+  }
+  table{
+    margin:auto;
+  }
+  li{
+    margin:auto;
+  }
+
+  h1{
+    margin:auto;
+    font-family: Fancy;
+    font-size: 3em;
+  }
+
+  .thing-form {
+    margin: 20px 0;
+  }
+
+  #banner {
+    border-bottom: none;
+    margin-top: -20px;
+  }
+
+  hr {
+    border:none;
+    height: 20px;
+    width: 90%;
+    height: 50px;
+    margin-top: 0;
+    border-bottom: 1px solid #1f1209;
+    box-shadow: 0 20px 20px -20px #333;
+    margin: -50px auto 10px;
+  }
+
+  #banner h1 {
+    font-family: "Fancy";
+    font-size: 3em;
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+
+  .hero-unit {
+    position: relative;
+    padding: 30px 15px;
+    color: #F5F5F5;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+    background: #4393B9;
+  }
+
+  .navbar-text {
+    margin-left: 15px;
+  }
+
+
+  div.tab { text-indent:40px }
+
+</style>
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <hr size="6">
+      <br>
       <button [routerLink]="['/home']" type="button" class="btn btn-default">
         Home
       </button>
+      <br><br>
       <hr size="6">
-      <h1 class= "col-xs-12 page-header">{{recipe?.name || ""}}
+      <br>
+      <h1 class= "col-xs-12 page-header">{{recipe?.name || ""}}</h1>
 
         <button (click)="editRecipe(recipe)"
                 type="button" class="btn btn-default">Edit Recipe
-        </button> </h1>
-
+        </button>
+      <br>
+      <hr size="6">
+      <br>
       <img src="{{recipe?.img_url}}" alt="{{recipe?.name}}" style="display: block; width: 100%;">
+      <br>
+      <hr size="6">
+      <br>
       <h4 class = "col-xs-12 col-sm-12 col-md-12 col-lg-12"> Name:</h4> <div>{{recipe?.name}}</div> <br>
       <h4 class = "col-xs-12 col-sm-12 col-md-12 col-lg-12"> Description:</h4> <div>{{recipe?.description}}</div> <br>
       <div class = "col-xs-12 col-sm-4 col-md-3 col-lg-2"><b>Prep Time:</b> {{recipe?.prep_time}} minutes</div>
@@ -38,11 +108,17 @@
       </div>
       <h4 class = "col-xs-12 col-sm-12 col-md-12 col-lg-12"> Reviews <button class = "col-xs-12 col-sm-12 col-md-12 col-lg-12" (click)="makeReview(recipe._id)" type="button" class="btn btn-default">Write A Review</button> </h4> <br> <div>
         <ul>
-          <li  *ngFor="let review of recipe?.user_reviews" >
+          <br>
+          <hr size="6">
+          <br>
+          <li style="margin:auto" *ngFor="let review of recipe?.user_reviews" >
             <button (click)="editReview(review)"> <rating [(ngModel)]="review.review_rating" [max]="5" [readonly]="true"></rating> </button> <br>
             By: {{review.by_user}} <br> Date Created: {{review.date}} <br>
             {{review.review_desc}}
           </li>
+          <br>
+          <hr size="6">
+          <br>
         </ul>
       </div>
 

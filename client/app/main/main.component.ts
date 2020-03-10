@@ -5,7 +5,8 @@ import {Recipe} from '../../components/interfaces/Recipe';
 import {CreateRecipeComponent} from '../../components/modals/create-recipe.component';
 import {BsModalService} from 'ngx-bootstrap';
 import {Recipes} from "../../components/interfaces/Recipes";
-
+import {User} from "../../components/interfaces/User";
+import {CreateUserComponent} from "../../components/modals/create-user.component";
 
 @Component({
   selector: 'main',
@@ -15,6 +16,7 @@ import {Recipes} from "../../components/interfaces/Recipes";
 export class MainComponent implements OnInit {
 
   private recipes: Recipe[];
+  private  users: User[];
   private input: string;
   static parameters = [HttpClient, RecipeService, BsModalService];
 
@@ -23,6 +25,7 @@ export class MainComponent implements OnInit {
     this.recipeService = recipeService;
     this.modalService = modalService;
     this.getRecipes();
+    this.getUsers();
   }
 
   public getRecipes() {
@@ -34,12 +37,35 @@ export class MainComponent implements OnInit {
       .catch(this.handleError);
   }
 
+  public getUsers() {
+    this.recipeService.getAllUsers()
+      .then(response => {
+        this.users = response.users as User[];
+        console.log(this.users);
+      })
+      .catch(this.handleError);
+  }
+
   public makeRecipe() {
     const modalRef = this.modalService.show(CreateRecipeComponent);
     modalRef.content.createdRecipe.subscribe((recipe) => {
       this.recipeService.createRecipe(recipe)
         .then(createdRecipe => {
           modalRef.content.formInfo = 'Recipe added!';
+        })
+        .catch(err => {
+          console.log(err);
+          modalRef.content.formError = err.error.message;
+        });
+    });
+  }
+
+  public makeUser() {
+    const modalRef = this.modalService.show(CreateUserComponent);
+    modalRef.content.createdUser.subscribe((user) => {
+      this.recipeService.createUser(user)
+        .then(createdRecipe => {
+          modalRef.content.formInfo = 'User created!';
         })
         .catch(err => {
           console.log(err);

@@ -1,0 +1,43 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" (click)="bsModalRef.hide()" class="close"><span
+      aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+    <h4 id="myModalLabel" class="modal-title">Make a User!</h4>
+  </div>
+
+  <div class="modal-body">
+    <div role="alert" [hidden]="!formError" class="alert alert-danger">{{ formError }}</div>
+    <div role="alert" [hidden]="!formInfo" class="alert alert-info">{{ formInfo }}</div>
+    <div class="form-group">
+
+      <label for="first_name" class = "col-xs-12 col-sm-12 col-md-12 col-lg-12">First Name:</label>
+      <div>
+        <input id="first_name" name="first" required="required" [(ngModel)]="user.fullName.firstName" class="form-control"/>
+      </div>
+      <label for="middle_name" class = "col-xs-12 col-sm-12 col-md-12 col-lg-12">Middle Name:</label>
+      <div>
+        <input id="middle_name" name="midle" required="required" [(ngModel)]="user.fullName.middleName" class="form-control"/>
+      </div>
+    <label for="last_name" class = "col-xs-12 col-sm-12 col-md-12 col-lg-12">Last Name:</label>
+    <div>
+      <input id="last_name" name="last" required="required" [(ngModel)]="user.fullName.lastName" class="form-control"/>
+    </div>
+      <label for="username" class = "col-xs-12 col-sm-12 col-md-12 col-lg-12">Username:</label>
+      <div>
+        <input id="username" name="username" required="required" [(ngModel)]="user.username" class="form-control"/>
+    </div>
+      <label for="email" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">Email:</label>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <input  id="email" name="email" required="required" [(ngModel)]="user.email" class="form-control"/> <br>
+      </div>
+
+  <div class="modal-footer">
+    <button (click)="bsModalRef.hide()" type="button" class="btn btndefault">
+      Back</button>
+    <button type="submit" class="btn btn-primary" (click)="createUser()">Add User</button>
+  </div>
+    </div>
+  </div>
+</div>
+
+

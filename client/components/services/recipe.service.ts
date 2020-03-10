@@ -4,6 +4,8 @@ import {Recipe} from "../interfaces/Recipe";
 import {Recipes} from "../interfaces/Recipes";
 import {Review} from "../interfaces/Review";
 import {Reviews} from "../interfaces/Reviews";
+import {User} from "../interfaces/User";
+import {Users} from "../interfaces/Users";
 
 @Injectable()
 export class RecipeService {
@@ -62,6 +64,24 @@ export class RecipeService {
   deleteReview(review: Review): Promise<Review> {
     return this.httpClient
       .delete<Review>(`/api/reviews/${review._id}`)
+      .toPromise();
+  }
+
+  createUser(user : User): Promise<User> {
+    return this.httpClient
+      .post<User>('/api/users', user)
+      .toPromise();
+  }
+
+  getUserById(userId): Promise<User> {
+    return this.httpClient
+      .get<User>(`/api/users/${userId}`)
+      .toPromise();
+  }
+
+  getAllUsers(): Promise<Users> {
+    return this.httpClient
+      .get<Users>('/api/users')
       .toPromise();
   }
 

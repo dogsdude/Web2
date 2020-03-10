@@ -5,8 +5,6 @@
     <h4 id="myModalLabel" class="modal-title">Write a Review</h4>
   </div>
 
-  <!-- 5e4862d695c8c9b927a8a383  :   userID for writing reviews -->
-
   <div class="modal-body">
     <div role="alert" [hidden]="!formError" class="alert alert-danger">{{ formError }}</div>
     <div role="alert" [hidden]="!formInfo" class="alert alert-info">{{ formInfo }}</div>
@@ -18,14 +16,10 @@
                 [titles]="['one','two','three']"></rating> <br>
       </div> <br>
 
-<!--      <label for="desc" class = "col-xs-12 col-sm-12 col-md-12 col-lg-12"></label>-->
       <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <input id="desc" name="desc" required="required" [(ngModel)]="review.review_desc" class="form-control" placeholder="Talk about the recipe in a few words..."/>
       </div>
-<!--      <label for="rating" class = "col-xs-12 col-sm-12 col-md-12 col-lg-12">Review Rating</label>-->
-<!--      <div class = "col-xs-12 col-sm-12 col-md-12 col-lg-12">-->
-<!--        <input id="rating" name="rating" required="required" [(ngModel)]="review.review_rating" class="form-control"/>-->
-<!--      </div>-->
+
       <label for="by_user" class = "col-xs-12 col-sm-12 col-md-12 col-lg-12">User ID:</label>
       <div>
         <input id="by_user" name="rating" required="required" [(ngModel)]="review.by_user" class="form-control"/> </div>

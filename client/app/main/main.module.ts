@@ -11,6 +11,7 @@ import { CarouselModule} from "ngx-bootstrap";
 import { RecipesModule } from "../recipes/recipes.module";
 import { UpdateRecipeModule } from "../../components/modals/update-recipe.module";
 import { RatingModule} from "ngx-bootstrap";
+import {CreateUserModule} from "../../components/modals/create-user.module";
 
 
 export const ROUTES: Routes = [
@@ -30,6 +31,8 @@ export const ROUTES: Routes = [
     BrowserAnimationsModule,
     RouterModule.forChild(ROUTES),
     TooltipModule.forRoot(),
+    CreateUserModule,
+
   ],
   declarations: [
     MainComponent,
