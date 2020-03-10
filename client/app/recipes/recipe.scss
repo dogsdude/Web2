@@ -1,13 +1,48 @@
-@font-face {
-  font-family: 'FancyCont';
-  src: url("")
-  //src: url('webfont.eot'); /* IE9 Compat Modes */
-  //src: url('webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  //url('webfont.woff') format('woff'), /* Modern Browsers */
-  //url('webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
-  //url('webfont.svg#svgFontName') format('svg'); /* Legacy iOS */
+@font-face{
+  font-family:"Fancy";
+  src: url("AintNothingFancy.ttf")
+}
+*{
+  font-family: Fancy;
+}
+h1 {
+  font-family: Fancy;
+  font-size: 3em;
 }
 
+body{
+  background-image: url("https://i.gifer.com/JSDR.gif");
+  background-repeat: repeat;
+}
+
+.thing-form {
+  margin: 20px 0;
+}
+
+#banner {
+  border-bottom: none;
+  margin-top: -20px;
+}
+
+#banner h1 {
+  font-family: "Fancy";
+  font-size: 3em;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.hero-unit {
+  position: relative;
+  padding: 30px 15px;
+  color: #F5F5F5;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  background: #4393B9;
+}
+
+.navbar-text {
+  margin-left: 15px;
+}
 
 
 div.tab { text-indent:40px }

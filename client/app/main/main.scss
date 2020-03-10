@@ -1,3 +1,18 @@
+@font-face{
+  font-family:"Fancy";
+  src: url("AintNothingFancy.ttf")
+}
+h1 {
+  font-family: Fancy;
+  font-size: 3em;
+
+}
+
+body{
+  background-image: url("https://1stwebdesigner.com/wp-content/uploads/2017/08/dealfuel-2.gif");
+  background-repeat: repeat;
+}
+
 .thing-form {
   margin: 20px 0;
 }
@@ -8,7 +23,8 @@
 }
 
 #banner h1 {
-  font-size: 60px;
+  font-family: "Fancy";
+  font-size: 3em;
   line-height: 1;
   letter-spacing: -1px;
 }
@@ -25,3 +41,4 @@
 .navbar-text {
   margin-left: 15px;
 }
+
